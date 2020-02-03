@@ -26,5 +26,5 @@ $(PRJDIR)person_detection/esp-idf/main/person_model_grayscale/%: $(MODEL_DOWNLOA
 	@python tensorflow/lite/micro/tools/make/transform_source.py \
         --platform=esp \
         --is_example_source \
-        --source_path="$(MODEL_EXAMPLES_DIR)/person_detect_model_data.cc" \
+        --source_path="$(patsubst $(MODEL_DOWNLOADS_DIR)/%,$(MODEL_EXAMPLES_DIR)/%,$<)" \
         < $< > $@
